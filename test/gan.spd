@@ -1,0 +1,46 @@
+# Gra "Zgadnij liczbe"
+# Autor: Kamil Malicki
+# Wersja: 1.0
+
+println("--- Zgadnij liczbe ---")
+println("Pomyslalem o liczbie od 1 do 100.")
+println("Zgadnij, jaka to liczba!")
+
+# Generowanie losowej liczby od 1 do 100
+losowa_liczba = round(random() * 100, 0)
+if (losowa_liczba == 0) {
+    losowa_liczba = 1
+}
+
+zgadnieta = false
+proba = 0
+
+# Glowna petla gry
+while (zgadnieta == false) {
+    wejscie = input("Podaj swoja liczbe:")
+    
+    # Konwersja wejscia na liczbe
+    uzytkownik_liczba = wejscie.toNumber()
+    
+    if (uzytkownik_liczba == -1) {
+        println("To nie jest liczba! Sprobuj jeszcze raz.")
+    } else {
+        proba = proba + 1
+        
+        if (uzytkownik_liczba < losowa_liczba) {
+            println("Za malo!")
+        }
+        
+        if (uzytkownik_liczba > losowa_liczba) {
+            println("Za duzo!")
+        }
+        
+        if (uzytkownik_liczba == losowa_liczba) {
+            println("Brawo! Udalo ci sie!")
+            println("Zgadles w " + proba.toString() + " probach.")
+            zgadnieta = true
+        }
+    }
+}
+
+println("--- Koniec gry ---")
